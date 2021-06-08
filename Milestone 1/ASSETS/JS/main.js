@@ -11,15 +11,9 @@ const app = new Vue({
     methods: {
         searchFilm() {
             fullUrl = this.url + this.search
-            console.log(fullUrl);
-            return fullUrl
-        }
-    },
 
-    mounted() {
-        /* const fullUrl = this.url ; */
-        axios
-            .get(this.fullUrl)
+            axios
+            .get(fullUrl)
             .then(resp => {
                 this.filmData = resp.data.results;
                 console.log(this.filmData);
@@ -28,6 +22,11 @@ const app = new Vue({
             .catch(e => {
                 console.error(e)
         })
+        }
+    },
+
+    mounted() {
+
     }
 
 })

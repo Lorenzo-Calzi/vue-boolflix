@@ -14,21 +14,30 @@
 <body>
     
     <div id="app">
+
+        <!-- NAVBAR -->
         <nav>
             <h1>BoolFlix</h1>
             <div>
-                <input type="text" placeholder="Cerca il titolo">
-                <button>SEARCH</button>
+                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="searchFilm">
+                <button @click="searchFilm">SEARCH</button>
             </div>
         </nav>
+        <!-- /NAVBAR -->
 
+        <!-- MAIN -->
         <main>
-            
+            <div class="films" v-for="film in filmData">
+                <div class="film">
+                    <h2>{{film.title}}</h2>
+                    <h3>{{film.original_title}}</h3>
+                    <h4>Language: {{film.original_language}}</h4>
+                    <strong>Vote: {{film.vote_average}}</strong>
+                </div>
+            </div>
+
         </main>
-
-
-
-
+        <!-- /MAIN -->
 
 
     </div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../Milestone2/ASSETS/CSS/style.css">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css "integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w== "crossorigin="anonymous" />
+    <!-- Title -->
+    <title>BoolFlix</title>
+</head>
+<body>
+    
+    <div id="app">
+
+        <!-- NAVBAR -->
+        <nav>
+            <h1>BoolFlix</h1>
+            <div>
+                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="searchSerie">
+                <button @click="searchFilm">SEARCH</button>
+            </div>
+        </nav>
+        <!-- /NAVBAR -->
+
+        <!-- MAIN -->
+        <main>
+
+            <div class="films" v-for="film in filmData">
+                <div class="film">
+                    <h2>{{film.title}}</h2>
+                    <h3>{{film.original_title}}</h3>
+                    <h4>Language: {{film.original_language}}</h4> 
+                    <strong>Vote: {{film.vote_average}}</strong>
+                </div>
+            </div>
+
+            <div class="series" v-for="serie in serieData">
+                <div class="serie">
+                    <h2>{{serie.name}}</h2>
+                    <h3>{{serie.original_name}}</h3>
+                    <h4>Language: {{serie.original_language}}</h4> 
+                    <strong>Vote: {{serie.vote_average}}</strong>
+                </div>
+            </div>
+
+            
+
+            <!-- <img src="https://www.countryflags.io/it/shiny/64.png"></img> -->
+
+        </main>
+        <!-- /MAIN -->
+
+
+    </div>
+
+
+
+
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Main JS -->
+    <script src="../Milestone2/ASSETS/JS/main.js"></script>
+    
+</body>
+</html>

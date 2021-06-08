@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* NAVBAR */
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: black;
+}
+nav h1{
+    color: #e50914;
+    text-transform: uppercase;
+}
+nav input, nav button{
+    padding: 5px;
+    border-radius: 5px;
+}
+nav button:hover{
+    cursor: pointer;
+}
+/* /NAVBAR */
+
+/* MAIN */
+main{
+    height: 300px;
+    width: 100%;
+    background-color: grey;
+}

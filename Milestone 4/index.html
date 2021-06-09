@@ -62,7 +62,6 @@
                             <i v-for="i in (5 - getVote(film.vote_average))" class="far fa-star"></i>
                         </div>
                         
-                        
                         <h4>Descrizione:</h4> <p>{{film.overview}}</p>
                     </div>
                     
@@ -86,14 +85,20 @@
                         <span class="type">FILM</span>
                         <h4>Titolo:</h4> <span>{{serie.name}}</span>
                         <h4>Titolo Originale:</h4> <span>{{serie.original_name}}</span>
-                        <h4>Lingua:</h4> <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
-                        <h4>Descrizione:</h4> <p>{{serie.overview}}</p>
-                    </div>
 
-                    <div>
-                        <h4>Voto:</h4>
-                        <i v-for="i in getVote(serie.vote_average)" class="fas fa-star"></i>
-                        <i v-for="i in (5 - getVote(serie.vote_average))" class="far fa-star"></i>
+                        <div class="language">
+                            <h4>Lingua:</h4> 
+                            <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
+                        </div>
+
+                        <div>
+                            <h4>Voto:</h4>
+                            <i v-for="i in getVote(serie.vote_average)" class="fas fa-star"></i>
+                            <i v-for="i in (5 - getVote(serie.vote_average))" class="far fa-star"></i>
+                        </div>
+
+                        <h4>Descrizione:</h4> <p>{{serie.overview}}</p>
+
                     </div>
 
                     <div class="bedge"> {{serie.vote_average}}</div>

@@ -1,0 +1,138 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(112, 111, 111);
+    font-family: 'Roboto', sans-serif;
+}
+main{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+/* NAVBAR */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgb(39, 39, 39);
+}
+nav a{
+    color: #e50914;
+    font-size: 45px;
+    font-family: 'Bebas Neue', cursive;
+    text-decoration: none;
+}
+nav input{
+    padding: 10px;
+    border: 2px solid rgb(90, 89, 89);
+    border-radius: 20px;
+    font-weight: 300;
+    font-size: 15px;
+}
+nav button{
+    padding: 10px 12px;
+    border: 2px solid rgb(90, 89, 89);
+    border-radius: 50%;
+    font-size: 15px;
+    background-color: white;
+    color: #e50914;
+}
+nav button:hover{
+    cursor: pointer;
+}
+/* /NAVBAR */
+
+/* MAIN */
+/* Film */
+.films{
+    display: inline-block;
+}
+.film{
+    margin: 15px;
+    position: relative;
+    cursor: pointer;
+}
+.bedge{
+    border: 2px solid rgb(42, 129, 39);
+    border-radius: 50%;
+    height: 45px;
+    width: 47px;
+    position: absolute;
+    bottom: -3%;
+    left: -5%;
+    background-color: rgb(36, 34, 59); 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+}
+.film:hover .description{
+    display: block
+}
+.film:hover .bedge{
+    display: none;
+}
+.flag{
+    margin-top: 10px;
+    height: 35px;
+}
+/* /Film */
+
+/* Serie TV */
+.series{
+    display: inline-block;
+}
+.serie{
+    margin: 15px 15px;
+    position: relative;
+    cursor: pointer;
+}
+.path{
+    height: 350px;
+    width: 280px;
+    border: 1px solid white;
+}
+.serie:hover .description{
+    display: block
+}
+.serie:hover .bedge{
+    display: none;
+}
+
+/* Description */
+.description{
+    display: none;
+    height: 350px;
+    width: 280px;
+    padding: 0px 10px 10px 10px ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    text-align: left;
+    border: 1px solid white;
+    background-color: rgb(39, 39, 39);
+}
+.description h4{
+    font-size: 15px;
+    padding: 20px 0px 2px 0px;
+    font-weight: 900  ;
+}
+.description span{
+    font-size: 16px;
+}
+.description p{
+    height: 80px;
+    overflow: auto;
+}
+.description p::-webkit-scrollbar {
+    display: none;
+}
+/* /Description */
+/* /Serie TV */

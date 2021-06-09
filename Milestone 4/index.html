@@ -26,8 +26,8 @@
             <!-- <h1>BoolFlix</h1> -->
             <a href="http://127.0.0.1:5501/Milestone%204/index.html">BoolFlix</a>
             <div>
-                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="searchSerie">
-                <button @click="searchFilm"><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="bothSearch">
+                <button @click="bothSearch"><i class="fas fa-search"></i></button>
             </div>
         </nav>
         <!-- /NAVBAR -->
@@ -37,7 +37,6 @@
 
             <!-- Film -->
 
-            <!-- <div vi-if="filmData"></div> -->
             <div class="films" v-for="film in filmData.results">
                 <div class="film">
 
@@ -53,7 +52,15 @@
                         <h4>Titolo:</h4> <span>{{film.title}}</span>
                         <h4>Titolo Originale:</h4> <span>{{film.original_title}}</span>
                         <h4>Lingua:</h4> <img class="flag" :src="'https://www.unknown.nu/flags/images/' + film.original_language + '-100'" alt="">
-                        <h4>Descrizione:</h4> <p>{{film.overview}}</p>
+                        
+                        <i v-for="i in getVote(film.vote_average)" :class="film.vote_average >= 2 ? 'fas' : 'far'" class=" fa-star"></i>
+                        <i v-for="i in getVote(film.vote_average)" :class="film.vote_average >= 4 ? 'fas' : 'far'" class=" fa-star"></i>
+                        <i v-for="i in getVote(film.vote_average)" :class="film.vote_average >= 6 ? 'fas' : 'far'" class=" fa-star"></i>
+                        <i v-for="i in getVote(film.vote_average)" :class="film.vote_average >= 8 ? 'fas' : 'far'" class=" fa-star"></i>
+                        <i v-for="i in getVote(film.vote_average)" :class="film.vote_average = 10 ? 'fas' : 'far'" class=" fa-star"></i>
+                        
+                        
+                        <!-- <h4>Descrizione:</h4> <p>{{film.overview}}</p> -->
                     </div>
                     
                     <div class="bedge">{{film.vote_average}}</div>
@@ -79,7 +86,7 @@
                         <h4>Lingua:</h4> <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
                         <h4>Descrizione:</h4> <p>{{serie.overview}}</p>
                     </div>
-                    
+
                     <div class="bedge"> {{serie.vote_average}}</div>
                    
                 </div>

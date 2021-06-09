@@ -44,6 +44,20 @@ const app = new Vue({
                 this.error = 'Sorry something went Wrong! ' + e;
             })
         },
+
+        bothSearch() {
+            this.searchFilm();
+            this.searchSerie();
+        },
+
+       /*  getVote(number){
+            const result = (Math.round(number)/2);
+            console.log(result);
+            return result
+        } */
+
+
+        
         
     },
 
@@ -51,6 +65,10 @@ const app = new Vue({
 
     }
 })
+
+
+
+
 
 
 

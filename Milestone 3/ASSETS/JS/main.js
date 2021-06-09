@@ -5,7 +5,6 @@ const app = new Vue({
         fullUrl: '',
         search: '',
         error: null,
-        flags: ['it', 'en'], // if includes 
 
         urlFilm: 'https://api.themoviedb.org/3/search/movie?api_key=e9adcb3a8787e160dfea6702af87220c&query=',
         filmData: [],
@@ -44,13 +43,23 @@ const app = new Vue({
                 console.error(e)
                 this.error = 'Sorry something went Wrong! ' + e;
             })
+        },
+
+        bothSearch() {
+            this.searchFilm();
+            this.searchSerie();
         }
+        
     },
 
     mounted() {
 
     }
 })
+
+
+
+
 
 
 

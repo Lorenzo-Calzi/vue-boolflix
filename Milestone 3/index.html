@@ -22,8 +22,8 @@
         <nav>
             <h1>BoolFlix</h1>
             <div>
-                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="searchSerie">
-                <button @click="searchFilm"><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="bothSearch">
+                <button @click="bothSearch"><i class="fas fa-search"></i></button>
             </div>
         </nav>
         <!-- /NAVBAR -->
@@ -33,7 +33,6 @@
 
             <!-- Film -->
 
-            <!-- <div vi-if="filmData"></div> -->
             <div class="films" v-for="film in filmData.results">
                 <div class="film">
 
@@ -66,7 +65,8 @@
                     <h2>{{serie.name}}</h2>
                     <h3>{{serie.original_name}}</h3>
                     <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
-                    <div class="circle_white">{{serie.vote_average}}</div>
+                    <div v-if="serie.vote_average === 7.9"><i class="fas fa-star"></i></div>
+                    <div class="circle_white"> {{serie.vote_average}}</div>
                 </div>
             </div> 
             <!-- /Serie TV -->

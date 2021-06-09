@@ -41,14 +41,15 @@
             <div class="films" v-for="film in filmData.results">
                 <div class="film">
 
-                    <div v-if="film.poster_path">
+                    <div class="container_path" v-if="film.poster_path">
                         <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + film.poster_path" alt="">
                     </div>
-                    <div v-else>
+                    <div class="container_path" v-else>
                         <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
                     </div>
 
                     <div class="description">
+                        <span class="type">SERIE TV</span>
                         <h4>Titolo:</h4> <span>{{film.title}}</span>
                         <h4>Titolo Originale:</h4> <span>{{film.original_title}}</span>
                         <h4>Lingua:</h4> <img class="flag" :src="'https://www.unknown.nu/flags/images/' + film.original_language + '-100'" alt="">
@@ -64,19 +65,21 @@
             <div class="series" v-for="serie in serieData.results">
                 <div class="serie">
 
-                    <div v-if="serie.poster_path">
+                    <div class="container_path" v-if="serie.poster_path">
                         <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" alt="">
                     </div>
-                    <div v-else>
+                    <div class="container_path" v-else>
                         <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
                     </div>
 
                     <div class="description">
+                        <span class="type">FILM</span>
                         <h4>Titolo:</h4> <span>{{serie.name}}</span>
                         <h4>Titolo Originale:</h4> <span>{{serie.original_name}}</span>
                         <h4>Lingua:</h4> <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
                         <h4>Descrizione:</h4> <p>{{serie.overview}}</p>
                     </div>
+                    
                     <div class="bedge"> {{serie.vote_average}}</div>
                    
                 </div>

@@ -50,15 +50,10 @@ const app = new Vue({
             this.searchSerie();
         },
 
-       /*  getVote(number){
-            const result = (Math.round(number)/2);
-            console.log(result);
+        getVote(number){
+            const result = (Math.round(number/2));
             return result
-        } */
-
-
-        
-        
+        }     
     },
 
     mounted() {

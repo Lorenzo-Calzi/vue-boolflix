@@ -82,7 +82,8 @@ nav button:hover{
 .flag{
     margin: 13px 0px 0px 20px;
     height: 35px;
-    width: 60px;
+    width: 55px;
+    border-radius: 1px;
 }
 /* /Film */
 
@@ -97,6 +98,7 @@ nav button:hover{
 }
 .container_path img{
     border-radius: 5px;
+    width: 280px;
 }
 .path{
     height: 350px;
@@ -145,10 +147,13 @@ nav button:hover{
     padding: 20px 0px 2px 0px;
     font-weight: 900;
 }
+.shorten_text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .description span{
     font-size: 17px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 .description p{
     height: 60px;
@@ -159,3 +164,5 @@ nav button:hover{
 }
 /* /Description */
 /* /Serie TV */
+
+

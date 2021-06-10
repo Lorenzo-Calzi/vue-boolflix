@@ -48,9 +48,15 @@
                     </div>
 
                     <div class="description">
-                        <strong class="type">SERIE TV</strong>
-                        <h4>Titolo:</h4> <span>{{film.title}}</span>
-                        <h4>Titolo Originale:</h4> <span>{{film.original_title}}</span>
+                        <strong class="type">FILM</strong>
+                        <h4>Titolo:</h4> 
+                        <div class="shorten_text">
+                            <span>{{film.title}}</span>
+                        </div>
+                        <h4>Titolo Originale:</h4> 
+                        <div class="shorten_text">
+                            <span>{{film.original_title}}</span>
+                        </div>
                         <div class="language">
                             <h4>Lingua:</h4> 
                             <img class="flag" :src="'https://www.unknown.nu/flags/images/' + film.original_language + '-100'" alt="">
@@ -62,7 +68,10 @@
                             <i v-for="i in (5 - getVote(film.vote_average))" class="far fa-star"></i>
                         </div>
                         
-                        <h4>Descrizione:</h4> <p>{{film.overview}}</p>
+                        <h4>Descrizione:</h4>
+
+                        <p v-if="film.overview">{{film.overview}}</p>
+                        <p v-else= "film.overview">*Descrizione Mancante*</p>
                     </div>
                     
                     <div class="bedge">{{film.vote_average}}</div>
@@ -82,9 +91,15 @@
                     </div>
 
                     <div class="description">
-                        <span class="type">FILM</span>
-                        <h4>Titolo:</h4> <span>{{serie.name}}</span>
-                        <h4>Titolo Originale:</h4> <span>{{serie.original_name}}</span>
+                        <span class="type">SERIE TV</span>
+                        <h4>Titolo:</h4> 
+                        <div class="shorten_text">
+                            <span>{{serie.name}}</span>
+                        </div>
+                        <h4>Titolo Originale:</h4> 
+                        <div class="shorten_text">
+                            <span>{{serie.original_name}}</span>
+                        </div>
 
                         <div class="language">
                             <h4>Lingua:</h4> 
@@ -97,7 +112,10 @@
                             <i v-for="i in (5 - getVote(serie.vote_average))" class="far fa-star"></i>
                         </div>
 
-                        <h4>Descrizione:</h4> <p>{{serie.overview}}</p>
+                        <h4>Descrizione:</h4>
+
+                        <p v-if="serie.overview">{{serie.overview}}</p>
+                        <p v-else= "serie.overview">*Descrizione Mancante*</p>
 
                     </div>
 

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./ASSETS/CSS/style.css">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css "integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w== "crossorigin="anonymous" />
+    <!-- Netflix Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Roboto Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Title -->
+    <title>BoolFlix</title>
+</head>
+<body>
+    
+    <div id="app">
+
+        <!-- NAVBAR -->
+        <nav>
+            <a href="http://127.0.0.1:5501/Milestone%204/index.html">BoolFlix</a>
+            <div>
+                <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="bothSearch">
+                <button @click="bothSearch"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+        <!-- /NAVBAR -->
+
+        <!-- MAIN -->
+        <main>
+
+            <!-- <div class="message" >
+                <div>
+                    <h1>Cerca il tuo contenuto preferito!</h1>
+                </div>
+                <div>
+                    <i class="fas fa-film"></i> 
+                </div>
+            </div> -->
+
+            <!-- Film -->
+            <div class="films"v-for="film in filmData.results">
+                <div class="film">
+
+                    <!-- Background Image -->
+                    <div class="container_path" v-if="film.poster_path">
+                        <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + film.poster_path" alt="">
+                    </div>
+                    <div class="container_path" v-else>
+                        <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
+                    </div>
+                    <!-- /Background Image -->
+
+                    <!-- Description Film -->
+                    <div class="description">
+                        <strong class="type">FILM</strong>
+                        <h4>Titolo:</h4> 
+                        <div class="shorten_text">
+                            <span>{{film.title}}</span>
+                        </div>
+                        <h4>Titolo Originale:</h4> 
+                        <div class="shorten_text">
+                            <span>{{film.original_title}}</span>
+                        </div>
+                        <div class="language">
+                            <h4>Lingua:</h4> 
+                            <img class="flag" :src="'https://www.unknown.nu/flags/images/' + film.original_language + '-100'" alt="">
+                        </div>
+                        
+                        <div>
+                            <h4>Voto:</h4>
+                            <i v-for="i in getVote(film.vote_average)" class="fas fa-star"></i>
+                            <i v-for="i in (5 - getVote(film.vote_average))" class="far fa-star"></i>
+                        </div>
+                        
+                        <h4>Descrizione:</h4>
+
+                        <p v-if="film.overview">{{film.overview}}</p>
+                        <p v-else= "film.overview">*Descrizione Mancante*</p>
+                    </div>
+                    <!-- /Description Film -->
+                    
+                    <!-- Voto -->
+                    <div class="bedge">{{film.vote_average}}</div>
+                    <!-- /Voto -->
+
+                </div>
+            </div>
+            <!-- /Film -->
+
+            <!-- Serie TV -->
+            <div class="series" v-for="serie in serieData.results">
+                <div class="serie">
+
+                    <!-- Background Image -->
+                    <div class="container_path" v-if="serie.poster_path">
+                        <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" alt="">
+                    </div>
+                    <div class="container_path" v-else>
+                        <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
+                    </div>
+                    <!-- /Background Image -->
+
+                    <!-- Description Serie -->
+                    <div class="description">
+                        <span class="type">SERIE TV</span>
+
+                        <div class="" v-for="genre in genreData.genres">
+                            <div v-if="serie.genre_ids === genre.id"></div>
+                            {{genre.name}}
+                        </div>
+
+                        <h4>Titolo:</h4> 
+                        <div class="shorten_text">
+                            <span>{{serie.name}}</span>
+                        </div>
+                        <h4>Titolo Originale:</h4> 
+                        <div class="shorten_text">
+                            <span>{{serie.original_name}}</span>
+                        </div>
+
+                        <div class="language">
+                            <h4>Lingua:</h4> 
+                            <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
+                        </div>
+
+                        <div>
+                            <h4>Voto:</h4>
+                            <i v-for="i in getVote(serie.vote_average)" class="fas fa-star"></i>
+                            <i v-for="i in (5 - getVote(serie.vote_average))" class="far fa-star"></i>
+                        </div>
+
+                        <h4>Descrizione:</h4>
+
+                        <p v-if="serie.overview">{{serie.overview}}</p>
+                        <p v-else= "serie.overview">*Descrizione Mancante*</p>
+                    </div>
+                    <!-- /Description Serie -->
+
+                    <!-- Voto -->
+                    <div class="bedge"> {{serie.vote_average}}</div>
+                    <!-- /Voto -->
+                   
+                </div>
+            </div> 
+            <!-- /Serie TV -->
+
+        </main>
+        <!-- /MAIN -->
+
+    </div>
+
+
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Main JS -->
+    <script src="./ASSETS/JS/main.js"></script>
+    
+</body>
+</html>

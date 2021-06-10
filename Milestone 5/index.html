@@ -23,7 +23,7 @@
 
         <!-- NAVBAR -->
         <nav>
-            <a href="http://127.0.0.1:5501/Milestone%204/index.html">BoolFlix</a>
+            <a @click="svuotaPagina">BoolFlix</a>
             <div>
                 <input type="text" placeholder="Cerca il titolo" v-model="search" @keyup.enter="bothSearch">
                 <button @click="bothSearch"><i class="fas fa-search"></i></button>
@@ -34,118 +34,136 @@
         <!-- MAIN -->
         <main>
 
-            <!-- <div class="message" >
+            <!-- Message -->
+            <div class="message" v-if="filmData.length == 0" >
                 <div>
                     <h1>Cerca il tuo contenuto preferito!</h1>
                 </div>
                 <div>
                     <i class="fas fa-film"></i> 
                 </div>
-            </div> -->
+            </div>
+             <!-- /Message -->
 
-            <!-- Film -->
-            <div class="films"v-for="film in filmData.results">
+             <!-- Film -->
+             <div class="films" v-for="film in filmData.results" v-else>
                 <div class="film">
 
-                    <!-- Background Image -->
-                    <div class="container_path" v-if="film.poster_path">
-                        <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + film.poster_path" alt="">
-                    </div>
-                    <div class="container_path" v-else>
-                        <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
-                    </div>
-                    <!-- /Background Image -->
-
                     <!-- Description Film -->
-                    <div class="description">
-                        <strong class="type">FILM</strong>
-                        <h4>Titolo:</h4> 
-                        <div class="shorten_text">
-                            <span>{{film.title}}</span>
-                        </div>
-                        <h4>Titolo Originale:</h4> 
-                        <div class="shorten_text">
-                            <span>{{film.original_title}}</span>
-                        </div>
-                        <div class="language">
-                            <h4>Lingua:</h4> 
-                            <img class="flag" :src="'https://www.unknown.nu/flags/images/' + film.original_language + '-100'" alt="">
-                        </div>
-                        
-                        <div>
-                            <h4>Voto:</h4>
-                            <i v-for="i in getVote(film.vote_average)" class="fas fa-star"></i>
-                            <i v-for="i in (5 - getVote(film.vote_average))" class="far fa-star"></i>
-                        </div>
-                        
-                        <h4>Descrizione:</h4>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                               
+                                <div v-if="film.poster_path">
+                                    <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + film.poster_path" alt="">
+                                </div>
 
-                        <p v-if="film.overview">{{film.overview}}</p>
-                        <p v-else= "film.overview">*Descrizione Mancante*</p>
+                                <div v-else>
+                                    <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
+                                </div>
+
+                            </div>
+                              
+                            <div class="flip-card-back">
+                                
+                                <span class="type">Film</span>
+                                
+                                <h4>Titolo:</h4> 
+                                <div class="shorten_text">
+                                    <span>{{film.title}}</span>
+                                </div>
+                                
+                                <h4>Titolo Originale:</h4> 
+                                <div class="shorten_text">
+                                    <span>{{film.original_title}}</span>
+                                </div>
+
+                                <div class="language">
+                                    <h4>Lingua:</h4> 
+                                    <img class="flag" :src="'https://www.unknown.nu/flags/images/' + film.original_language + '-100'" alt="">
+                                </div>
+
+                                <div>
+                                    <h4>Voto:</h4>
+                                    <i v-for="i in getVote(film.vote_average)" class="fas fa-star"></i>
+                                    <i v-for="i in (5 - getVote(film.vote_average))" class="far fa-star"></i>
+                                </div>
+                
+                                <h4>Descrizione:</h4>
+                                <p v-if="film.overview">{{film.overview}}</p>
+                                <p v-else= "film.overview">*Descrizione Mancante*</p>
+
+                            </div>
+                        </div>
                     </div>
                     <!-- /Description Film -->
-                    
-                    <!-- Voto -->
-                    <div class="bedge">{{film.vote_average}}</div>
-                    <!-- /Voto -->
 
+                    <!-- Voto -->
+                    <div class="bedge"> {{film.vote_average}}</div>
+                    <!-- /Voto -->
+  
                 </div>
-            </div>
+            </div> 
             <!-- /Film -->
+             
 
             <!-- Serie TV -->
             <div class="series" v-for="serie in serieData.results">
                 <div class="serie">
 
-                    <!-- Background Image -->
-                    <div class="container_path" v-if="serie.poster_path">
-                        <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" alt="">
-                    </div>
-                    <div class="container_path" v-else>
-                        <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
-                    </div>
-                    <!-- /Background Image -->
-
                     <!-- Description Serie -->
-                    <div class="description">
-                        <span class="type">SERIE TV</span>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
 
-                        <div class="" v-for="genre in genreData.genres">
-                            <div v-if="serie.genre_ids === genre.id"></div>
-                            {{genre.name}}
+                                <div v-if="serie.poster_path">
+                                    <img class="path" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" alt="">
+                                </div>
+
+                                <div v-else>
+                                    <img class="path" src="https://static.thenounproject.com/png/1100147-200.png" alt="">
+                                </div>
+
+                            </div>
+                              
+                            <div class="flip-card-back">
+                                
+                                <span class="type">Serie TV</span>
+                                
+                                <h4>Titolo:</h4> 
+                                <div class="shorten_text">
+                                    <span>{{serie.name}}</span>
+                                </div>
+
+                                <h4>Titolo Originale:</h4> 
+                                <div class="shorten_text">
+                                    <span>{{serie.original_name}}</span>
+                                </div>
+
+                                <div class="language">
+                                    <h4>Lingua:</h4> 
+                                    <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
+                                </div>
+
+                                <div>
+                                    <h4>Voto:</h4>
+                                    <i v-for="i in getVote(serie.vote_average)" class="fas fa-star"></i>
+                                    <i v-for="i in (5 - getVote(serie.vote_average))" class="far fa-star"></i>
+                                </div>
+                
+                                <h4>Descrizione:</h4>
+                                <p v-if="serie.overview">{{serie.overview}}</p>
+                                <p v-else= "serie.overview">*Descrizione Mancante*</p>
+
+                            </div>
                         </div>
-
-                        <h4>Titolo:</h4> 
-                        <div class="shorten_text">
-                            <span>{{serie.name}}</span>
-                        </div>
-                        <h4>Titolo Originale:</h4> 
-                        <div class="shorten_text">
-                            <span>{{serie.original_name}}</span>
-                        </div>
-
-                        <div class="language">
-                            <h4>Lingua:</h4> 
-                            <img class="flag" :src="'https://www.unknown.nu/flags/images/' + serie.original_language + '-100'" alt="">
-                        </div>
-
-                        <div>
-                            <h4>Voto:</h4>
-                            <i v-for="i in getVote(serie.vote_average)" class="fas fa-star"></i>
-                            <i v-for="i in (5 - getVote(serie.vote_average))" class="far fa-star"></i>
-                        </div>
-
-                        <h4>Descrizione:</h4>
-
-                        <p v-if="serie.overview">{{serie.overview}}</p>
-                        <p v-else= "serie.overview">*Descrizione Mancante*</p>
                     </div>
                     <!-- /Description Serie -->
 
                     <!-- Voto -->
                     <div class="bedge"> {{serie.vote_average}}</div>
                     <!-- /Voto -->
-                   
+  
                 </div>
             </div> 
             <!-- /Serie TV -->

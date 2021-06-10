@@ -14,7 +14,7 @@ main{
     text-align: center;
 }
 /* /COMMON RULES */
-
+  
 /* NAVBAR */
 nav{
     display: flex;
@@ -26,9 +26,10 @@ nav{
 }
 nav a{
     color: #e50914;
-    font-size: 45px;
+    font-size: 50px;
     font-family: 'Bebas Neue', cursive;
     text-decoration: none;
+    cursor: pointer;
 }
 nav input{
     padding: 10px;
@@ -49,19 +50,135 @@ nav button:hover{
     cursor: pointer;
 }
 /* /NAVBAR */
-
+  
 /* MAIN */
+/* Message */
+.message{
+    padding-top: 100px;
+    font-size: 30px;
+    color: rgb(41, 41, 41);
+}
+  
+.message i{
+    font-size: 350px;
+}
+/* /Message */
+  
 /* Film */
 .films{
+    width: 280px;
     display: inline-block;
-}
-.film{
-    margin: 15px;
-    position: relative;
+    margin: 12px;
     cursor: pointer;
+    text-align: left;
+    position: relative;
+    border-radius: 5px;
+}
+/* /Film */
+  
+/* Serie TV */
+.series{
+    width: 280px;
+    display: inline-block;
+    margin: 12px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+}
+/* /Serie TV */
+  
+/* Flip Card */
+.flip-card {
+    height: 400px;
+    width: 280px;
+    perspective: 1000px;
+}
+.flip-card-front img{
+    height: 400px;
+    width: 280px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px 2px rgb(163, 163, 163);
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip-card-front {
+    border-radius: 5px;
+}
+.flip-card-back {
+    width: 279px;
+    background-color: rgb(49, 58, 77);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 0px 10px 10px 10px ;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.flip-card h4{
+    font-size: 18px;
+    padding: 20px 0px 2px 0px;
+    font-weight: 900;
+}
+.flip-card span{
+    font-size: 17px;
+}
+.flip-card p{
+    height: 100px;
+    overflow: auto;
+}
+.flip-card p::-webkit-scrollbar {
+    display: none;
+} 
+.series:hover .bedge{
+    opacity: 0;
+}
+.films:hover .bedge{
+    opacity: 0;
+}
+/* Flip Card */
+  
+/* Description */
+.type{
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    border: 1px solid white;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+}
+.language{
+    display: flex;
+}
+.shorten_text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.flag{
+    margin: 13px 0px 0px 20px;
+    height: 35px;
+    width: 55px;
+    border-radius: 1px;
 }
 .bedge{
-    border: 2px solid rgb(42, 129, 39);
+    border: 2px solid rgb(57, 138, 54);
     border-radius: 50%;
     height: 45px;
     width: 47px;
@@ -74,114 +191,7 @@ nav button:hover{
     justify-content: center;
     align-items: center;
     font-weight: 900;
-}
-.film:hover .description{
-    display: block
-}
-.film:hover .bedge{
-    display: none;
-}
-.flag{
-    margin: 13px 0px 0px 20px;
-    height: 35px;
-    width: 55px;
-    border-radius: 1px;
-}
-/* /Film */
-
-/* Serie TV */
-.series{
-    display: inline-block;
-}
-.serie{
-    margin: 15px 15px;
-    position: relative;
-    cursor: pointer;
-}
-.container_path img{
-    border-radius: 5px;
-    width: 280px;
-}
-.path{
-    height: 400px;
-    width: 300px;
-    border: 1px solid white;
-    box-shadow: 1px 1px 10px 1px rgb(51, 51, 51);
-}
-.serie:hover .description{
-    /* transform: rotateY(180deg); */
-    display: block
-}
-.serie:hover .bedge{
-    display: none;
-}
-
-/* Description */
-.description{
-    display: none;
-    height: 400px;
-    width: 280px;
-    padding: 0px 10px 10px 10px ;
-    border-radius: 5px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: white;
-    text-align: left;
-    border: 1px solid white;
-    /* background-color: rgb(39, 39, 39); */
-    background-color: rgb(23, 38, 68);
-}
-.type{
-    position: absolute;
-    right: 0;
-    padding: 5px;
-    border: 2px solid white;
-    border-right: none;
-    border-top: none;
-    border-bottom-left-radius: 5px;
-    font-weight: 600;
-    text-align: center;
-}
-.language{
-    display: flex;
-}
-.description h4{
-    font-size: 18px;
-    padding: 20px 0px 2px 0px;
-    font-weight: 900;
-}
-.shorten_text{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.description span{
-    font-size: 17px;
-}
-.description p{
-    height: 100px;
-    overflow: auto;
-}
-.description p::-webkit-scrollbar {
-    display: none;
+    transition: 0.5s;
 }
 /* /Description */
-/* /Serie TV */
-
-
-
-.message{
-    /* height: 100%;
-    width: 100%; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    padding-top: 100px;
-    font-size: 30px;
-    color: rgb(41, 41, 41);
-}
-
-.message i{
-    font-size: 450px;
-}
+/* MAIN */

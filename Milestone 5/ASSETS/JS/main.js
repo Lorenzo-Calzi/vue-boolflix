@@ -72,7 +72,14 @@ const app = new Vue({
         getVote(number){
             const result = (Math.round(number/2));
             return result
-        }     
+        },
+        
+        svuotaPagina(){
+            this.filmData = '';
+            this.serieData = '';
+            this.search = '';
+        }
+
     },
 
     mounted() {
